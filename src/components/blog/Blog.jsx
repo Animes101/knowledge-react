@@ -3,6 +3,12 @@ import { CiSaveDown1 } from "react-icons/ci";
 const Blog = (props) => {
 
     const {author,id,name,post_date,profile_img,reading_time,title,description,image}=props.blog;
+    const {onBookMark}=props;
+
+    const handleBookMark=()=>{
+        onBookMark()
+
+    }
 
   return <div className="w-[90%] mx-auto  bg-[#6047EC1A] p-5 rounded-md">
     <img className="w-full rounded-md h-[400px]" src={image} alt={name} />
@@ -17,7 +23,7 @@ const Blog = (props) => {
 
         </div>
         <div>
-            <h2 className="text-[#11111199] text-2xl ">{reading_time > 9 ?  `${reading_time}`:`0${reading_time}`} min read <CiSaveDown1 className=" inline-block text-3xl text-green-500" /></h2>
+            <h2 onClick={handleBookMark} className="text-[#11111199] cursor-pointer text-2xl ">{reading_time > 9 ?  `${reading_time}`:`0${reading_time}`} min read <CiSaveDown1 className=" inline-block text-3xl text-green-500" /></h2>
         </div>
         </div>
         <h3 className="text-[#11111199] text-lg font-semibold">{title}</h3>

@@ -6,12 +6,17 @@ import Header from './components/header/Header'
 
 function App() {
 
+  const handleBookMark=()=>{
+    alert('ok')
+
+  }
+
 
   return (
     <div className='w-[90%] mx-auto'>
     <Header></Header>
     <div className='md:flex md:gap-5 my-10'>
-    <Blogs></Blogs>
+    <Blogs onBookMark={handleBookMark}></Blogs>
     <BookMark></BookMark>
     </div>
     </div>
