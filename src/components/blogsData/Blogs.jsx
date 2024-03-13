@@ -6,8 +6,6 @@ const Blogs = ({onBookMark}) => {
 
     const [blogs ,setBlogs]=useState([]);
 
-    console.log(blogs);
-
     useEffect(()=>{
         fetch('dB.json')
         .then(res=>res.json())

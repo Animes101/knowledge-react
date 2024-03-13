@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CiSaveDown1 } from "react-icons/ci";
 
 const Blog = (props) => {
@@ -5,8 +6,11 @@ const Blog = (props) => {
     const {author,id,name,post_date,profile_img,reading_time,title,description,image}=props.blog;
     const {onBookMark}=props;
 
+    const [isMark ,setIsMark]=useState(false);
+
     const handleBookMark=()=>{
-        onBookMark()
+        onBookMark(props.blog)
+        setIsMark(!isMark);
 
     }
 
@@ -23,7 +27,7 @@ const Blog = (props) => {
 
         </div>
         <div>
-            <h2 onClick={handleBookMark} className="text-[#11111199] cursor-pointer text-2xl ">{reading_time > 9 ?  `${reading_time}`:`0${reading_time}`} min read <CiSaveDown1 className=" inline-block text-3xl text-green-500" /></h2>
+        <h2 onClick={handleBookMark} className="text-[#11111199] cursor-pointer text-2xl ">{reading_time > 9 ?  `${reading_time}`:`0${reading_time}`} min read <CiSaveDown1 className={`inline-block text-3xl ${isMark ? 'text-red-500' : 'text-green-500'}`} /></h2>
         </div>
         </div>
         <h3 className="text-[#11111199] text-lg font-semibold">{title}</h3>
