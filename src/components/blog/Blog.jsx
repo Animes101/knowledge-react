@@ -5,13 +5,20 @@ const Blog = (props) => {
 
     const {author,id,name,post_date,profile_img,reading_time,title,description,image}=props.blog;
     const {onBookMark}=props;
+    const {onReadTime}=props;
 
     const [isMark ,setIsMark]=useState(false);
+    const [isReadTime ,setIsReadTime]=useState(false);
 
     const handleBookMark=()=>{
         onBookMark(props.blog)
         setIsMark(!isMark);
 
+    }
+
+    const readTive=()=>{
+        onReadTime(reading_time);
+        setIsReadTime(true);
     }
 
   return <div className="w-[90%] mx-auto  bg-[#6047EC1A] p-5 rounded-md">
@@ -27,7 +34,7 @@ const Blog = (props) => {
 
         </div>
         <div>
-        <h2 onClick={handleBookMark} className="text-[#11111199] cursor-pointer text-2xl ">{reading_time > 9 ?  `${reading_time}`:`0${reading_time}`} min read <CiSaveDown1 className={`inline-block text-3xl ${isMark ? 'text-red-500' : 'text-green-500'}`} /></h2>
+        <h2 onClick={readTive} className={` cursor-pointer text-2xl ${isReadTime ?"text-red-500":"text-[#111]"}`}>{reading_time > 9 ?  `${reading_time}`:`0${reading_time}`} min read <CiSaveDown1 className={`inline-block text-4x ${isReadTime ? 'text-red-500': ' text-green-500'}`}/></h2>
         </div>
         </div>
         <h3 className="text-[#11111199] text-lg font-semibold">{title}</h3>
@@ -36,7 +43,7 @@ const Blog = (props) => {
             <h4 className="text-2xl font-semibold ">#beginners</h4>
             <h4 className="text-2xl font-semibold ">#programming</h4>
         </div>
-        <button className="text-[#6047EC] underline underline-offset-8 text-3xl font-bold">Mark as read</button>
+    <button onClick={handleBookMark} className={`underline underline-offset-8 text-3xl font-bold ${isMark ? 'text-red-500' : 'text-green-500'}`}>Mark as read</button>
     </div>
 
 

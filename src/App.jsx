@@ -8,6 +8,7 @@ import Header from './components/header/Header'
 function App() {
 
   const [bookMark ,setBookMark]=useState([]);
+  const [readTimes ,setIsTimes]=useState(0);
 
   const handleBookMark=(blog)=>{
 
@@ -16,12 +17,19 @@ function App() {
 
   }
 
+  const readTime=(time)=>{
+
+    setIsTimes(prev=>prev +time);
+
+
+  }
+
   return (
     <div className='w-[90%] mx-auto'>
     <Header></Header>
     <div className='md:flex md:gap-5 my-10'>
-    <Blogs onBookMark={handleBookMark}></Blogs>
-    <BookMark bookMark={bookMark}></BookMark>
+    <Blogs onBookMark={handleBookMark} onReadTime={readTime}></Blogs>
+    <BookMark bookMark={bookMark} readTimes={readTimes}></BookMark>
     </div>
     </div>
   )
